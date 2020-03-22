@@ -2,12 +2,38 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <script>            
+        <script>
+            let MAP_H = 30;
+            let MAP_W = 30;
+            let map = new Array[MAP_H * MAP_W];
+
+            function init_map() {
+                for (let i = 0; i < MAP_H * MAP_W; i++) {
+                    map[i] = 0;
+                }
+            }
+
+            function disp_map() {
+            }
+
+            window.onload = function() {
+                let tb = document.getElementsByTagName("table");
+                for (let i = 0; i < MAP_H; i++) {
+                    let tr = document.createElement("tr");
+                    tb.appendChild(tr);
+                    for (let j = 0; j < MAP_W; j++) {
+                        let td = document.createElement("td");
+                        tr.appendChild("td");
+                    }
+                }
+
+
+            }
         </script>
     </head>
     <body>
         <table>
         </table>
-        <button></button>
+        <button>次の日</button>
     </body>
 </html>
