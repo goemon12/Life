@@ -3,31 +3,63 @@
     <head>
         <meta charset="utf-8">
         <script>
-            let MAP_H = 30;
-            let MAP_W = 30;
-            let map = new Array[MAP_H * MAP_W];
+            let MAP_H = 20;
+            let MAP_W = 40;
+            let map1;
+            let map2;
 
-            function init_map() {
-                for (let i = 0; i < MAP_H * MAP_W; i++) {
-                    map[i] = 0;
+            function disp() {
+                for (let i = 0; i < MAP_H; i++) {
+                    for (let j = 0; j < MAP_W; j++) {
+                        document.getElementsByTagName("td")[i * MAP_W + j].innerText = map1[i][j];
+                    }
                 }
             }
 
-            function disp_map() {
+            function calc1() {
+                for (let i = 0; i < MAP_H; i++) {
+                    for (let j = 0; j < MAP_W; j++) {
+                        if (map1[i][j] > 0) {
+                            if (Math.floor(Math.random() * 10) > 0) {
+                                map2[i][j] = map1[i][j] + 1;//感染継続
+                            }
+                            else {
+                                map2[i][j] = map1[i][j] * -1;//回復
+                            }
+                        }
+                        else {
+                        }
+                    }
+                }
+            }
+
+            function calc2(y, x) {
+                if ((0 <= y && y < MAP_H) && (0 <= x && x < MAP_W)) {
+                }
             }
 
             window.onload = function() {
-                let tb = document.getElementsByTagName("table");
+                let tb = document.getElementsByTagName("table")[0];
+                map1 = new Array(MAP_H);
+                map2 = new Array(MAP_H);
                 for (let i = 0; i < MAP_H; i++) {
                     let tr = document.createElement("tr");
                     tb.appendChild(tr);
+                    map1[i] = new Array(MAP_W);
+                    map2[i] = new Array(MAP_W);
                     for (let j = 0; j < MAP_W; j++) {
                         let td = document.createElement("td");
-                        tr.appendChild("td");
+                        tr.appendChild(td);
+                        map1[i][j] = 0;
+                        map2[i][j] = 0;
                     }
                 }
 
+                let x1 = Math.floor(Math.random() * MAP_W);
+                let y1 = Math.floor(Math.random() * MAP_W);
+                map1[y1][x1] = 1;
 
+                disp();
             }
         </script>
     </head>
