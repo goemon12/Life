@@ -1,6 +1,9 @@
 let MAP_H = 10;
 let MAP_W = 20;
 
+let map1;
+let map2;
+
 function dispM() {
     let td = document.getElementsByTagName("td");
 
@@ -10,7 +13,6 @@ function dispM() {
         }
     }
 }
-
 
 window.onload = function() {
     let table = document.getElementsByTagName("table");
